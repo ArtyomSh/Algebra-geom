@@ -1,0 +1,49 @@
+#include <stdio.h>	
+#include <math.h>
+# define M_PI		3.14159265358979323846 // пи
+// если вам нужно ввести число под корнем, то после ввода а и в необходимо ввести третье число.0- нет чисел с корнем. 1 - а под корнем, 2 - б под корнем, 3 - а и б под корнем. 
+int main() {
+	int c, kor = 1, kor_min_1;
+	double a, b, m, arg_z = 0, M, ARG_Z, st_m, st_arg_z = 0, pow_1 = 0.0, kor_m = 0, kor_arg = 0;
+	printf("Input a and b (Z=a+bi)\n");
+	scanf_s("%lf %lf %d", &a, &b, &c);
+	printf("input power\n");
+	scanf_s("%lf", &pow_1);
+	printf("input root");
+	scanf_s("%d", &kor);
+	if (c != 0) {
+		if (c == 1) {
+			a = sqrt(a);
+		}
+		if (c == 2) {
+			b = sqrt(b);
+		}
+		if (c == 3) {
+			a = sqrt(a);
+			b = sqrt(b);
+		}
+	}
+	m = sqrt(a * a + b * b);//модуль
+	//далее поиск аргумента
+	if (a > 0) {
+		arg_z = atan(b / a);
+	}
+	if (a < 0 && b>0) {
+		arg_z = M_PI + atan(b / a);
+	}
+	if (a < 0 && b < 0) {
+		arg_z = -1 * M_PI + atan(b / a);
+	}
+	M = 1 / m;
+	ARG_Z = -1 * arg_z;
+	st_m = m * pow_1;
+	st_arg_z = arg_z * pow_1;
+	kor_m = pow(m, (float)1 / kor);
+	kor_arg = arg_z / kor;
+	kor_min_1 = kor - 1;
+	printf("Simple view: %0.3lf + %0.3lf*i, tryg view: %0.3lf*(cos(%0.3lf) + i*sin(%0.3lf))\n)", a, b, m, arg_z, arg_z);//вывод в двух формах, тригонометрической и обычной
+	printf("Z^(-1) = %lf*(cos(%lf) + i*sin(%lf))\n", M, ARG_Z, ARG_Z);// обратное
+	printf("Z in pow %lf = %lf*(cos(%lf) + i*sin(%lf)\n", pow_1, st_m, st_arg_z, st_arg_z); // вывод в ной степени
+	printf(" koren iz z = %lf (cos(%0.5lf + (2pi*n)/%d) + i*sin(%0.5lf + (2pi*n)/%d)), n = [0,%d]", kor_m, kor_arg, kor, kor_arg, kor, kor_min_1); // вывод корня из зет.
+	return 0;
+}
