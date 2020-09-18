@@ -36,7 +36,7 @@ int main() {
 	}
 	M = 1 / m;
 	ARG_Z = -1 * arg_z;
-	st_m = m * pow_1;
+	st_m = pow(m , pow_1);
 	st_arg_z = arg_z * pow_1;
 	kor_m = pow(m, (float)1 / kor);
 	kor_arg = arg_z / kor;
