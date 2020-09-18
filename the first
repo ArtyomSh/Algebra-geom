@@ -34,9 +34,15 @@ int main() {
 	if (a < 0 && b < 0) {
 		arg_z = -1 * M_PI + atan(b / a);
 	}
+	if (a == 0 && b > 0) {
+		arg_z = M_PI / 2;
+	}
+	if (a == 0 && b < 0) {
+		arg_z = (3 * M_PI) / 2;
+	}
 	M = 1 / m;
 	ARG_Z = -1 * arg_z;
-	st_m = pow(m , pow_1);
+	st_m = pow(m, pow_1);
 	st_arg_z = arg_z * pow_1;
 	kor_m = pow(m, (float)1 / kor);
 	kor_arg = arg_z / kor;
@@ -44,6 +50,7 @@ int main() {
 	printf("Simple view: %0.3lf + %0.3lf*i, tryg view: %0.3lf*(cos(%0.3lf) + i*sin(%0.3lf))\n)", a, b, m, arg_z, arg_z);//вывод в двух формах, тригонометрической и обычной
 	printf("Z^(-1) = %lf*(cos(%lf) + i*sin(%lf))\n", M, ARG_Z, ARG_Z);// обратное
 	printf("Z in pow %lf = %lf*(cos(%lf) + i*sin(%lf)\n", pow_1, st_m, st_arg_z, st_arg_z); // вывод в ной степени
-	printf(" The root of z  = %lf (cos(%0.5lf + (2pi*n)/%d) + i*sin(%0.5lf + (2pi*n)/%d)), n = [0,%d]", kor_m, kor_arg, kor, kor_arg, kor, kor_min_1); // вывод корня из зет.
+	printf(" koren iz z = %lf (cos(%0.5lf) + (2pi*n)/%d) + i*sin(%0.5lf) + (2pi*n)/%d)), n = [0,%d]", kor_m, kor_arg, kor, kor_arg, kor, kor_min_1); // вывод корня из зет.
 	return 0;
 }
+
