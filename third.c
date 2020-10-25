@@ -4,7 +4,7 @@
 
 int main(){
     int n,k, l = 0, max_i = 0, N = 0;
-    scanf ("%d %d",&n, &k);
+    scanf ("%d %d",&k, &n);
     float** a= (float**)malloc(n * sizeof(float*));
     for (int i = 0; i<n; i++)
     {
@@ -57,13 +57,13 @@ int main(){
                 }
             }
         }
-       /* for (int i = 0;i<n;i++){
+        for (int i = 0;i<n;i++){
                             for (int j = 0;j<k;j++){
                                 printf("%0.2f ",a[i][j]);
                             }
                             printf("\n");
                         }
-                        printf("\n");*/
+                        printf("\n");
         max = 0;
         l++;
         N++;
@@ -89,10 +89,9 @@ int main(){
     }
     printf("dim = %d\n",dim);
     if (dim == n){
-        printf("Lin. nez");
+        printf("Lin. nez\n");
     }else{
-        printf("Lin. Zav.");
+        printf("Lin. Zav\n");
     }
     return 0;
 }
-
