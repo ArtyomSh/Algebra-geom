@@ -57,24 +57,26 @@ int main(){
                 }
             }
         }
+        /*
         for (int i = 0;i<n;i++){
                             for (int j = 0;j<k;j++){
                                 printf("%0.2f ",a[i][j]);
                             }
                             printf("\n");
                         }
-                        printf("\n");
+                        printf("\n");*/
         max = 0;
         l++;
         N++;
     }
-    
+    /*
      for (int i = 0;i<n;i++){
      for (int j = 0;j<k;j++){
      printf("%0.2f ",a[i][j]);
      }
      printf("\n");
      }
+    */
     int dim = n;
     for (int i = 0;i<n;i++){
         int l = 0;
