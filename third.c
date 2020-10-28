@@ -17,6 +17,7 @@ int main(){
     
     int max = -1000000000;
     while (l<k && N<n){
+        /*
         int g = 0;
         for (int j = l;j<k; j++){
             for (int i =N ;i< n; i++){
@@ -25,13 +26,14 @@ int main(){
                 }
             }
         }
+        
         if (g == n){
             if (l+1 <k ){
                 l++;
             }
-            printf("_%d_%d_",l,N);
+            //printf("_%d_%d_",l,N);
             // N++;
-        }
+        }*/
         for (int i = l; i<n; i++){
             //int x = i;
             int y = l;
@@ -58,24 +60,24 @@ int main(){
                     //printf("<%f>",a[i][j]);
                 }
             }
-        }
+        }/*
         for (int i = 0;i<n;i++){
             for (int j = 0;j<k;j++){
                 printf("%0.2f ",a[i][j]);
             }
             printf("\n");
         }
-        printf("\n");
+        printf("\n");*/
         int koef = N;
         int z = l+1;
         for (int i = l; i<n-1 ;i++){ // вычитание
             //int koef = i;
-            printf("<%d>", z);
+            //printf("<%d>", z);
             if (a[z][l] != 0){
                 for (int j = l; j < k ; j++ ){
                     
                     //z++;
-                    printf("<%0.2f - %0.2f>\n",a[z][j], a[koef][j]);
+                    //printf("<%0.2f - %0.2f>\n",a[z][j], a[koef][j]);
                     a[z][j] = a[z][j]  - a[koef][j];
                     //printf("<%0.2f - %0.2f>\n",a[i+1][j], a[koef][j]);
                 }
