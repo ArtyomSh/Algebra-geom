@@ -50,6 +50,7 @@ int main(){
             det*= -1;
             //}
         }
+        max = -1000000000;
         for (int i = n1+1;i<n;i++){
             int l = 0;
             float v = a[i][n1];
@@ -68,12 +69,14 @@ int main(){
     for (int i = 0; i<n;i++){
         det *= a[i][i];
     }
+    /*
     for (int i = 0;i<n;i++){
             for (int j = 0;j<n;j++){
                 printf("%0.2f ",a[i][j]);
             }
             printf("\n");
         }
+    */
     printf("%0.2f",det);
     return 0;
 }
