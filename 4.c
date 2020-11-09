@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <math.h>
 int main(){
     int n, l = 0, max_i = 0;
     float det = 1;
@@ -31,18 +31,18 @@ int main(){
         l++;
     }
     int n1 = 0;
-    float max = -1000000000;
+    float max = 0;
     //printf("%d",l);
-    while (n1<n-1){
+    while (n1<n - 1){
         for (int i = n1; i<n; i++){
             //int x = i;
             //printf("(%d)-(%d)\n", a[i][y], max);
-            if (a[i][n1]> max){ // поиск максимума
+            if (fabs(a[i][n1])> fabs(max)){ // поиск максимума
                 max = a[i][n1];
                 max_i = i;
             }
         }
-        if (max!=a[n1][n1]){  // замена двух строк местами
+        if (max!=a[n1][n1]){  // замена двух строк местами && a[n1][n1] != 0
             //for (int m = 0; m<k;m++){
             float* t = a[n1];
             a[n1]= a[max_i];
@@ -51,15 +51,16 @@ int main(){
             //}
         }
         max = -1000000000;
+        max_i = n1+1;
         for (int i = n1+1;i<n;i++){
             int l = 0;
             float v = a[i][n1];
             for (int j = n1; j<n;j++){
-                if (a[i][n1]!=0 || l ==1){
+                if ((a[i][n1]!=0 || l ==1) ){
                     l = 1;
                     //printf("xx%fxx\n",v);
                     //printf("<%f>\n",a[i][n1]);
-                    a[i][j]-= a[n1][j]*( v / a[n1][n1]);
+                   a[i][j]-= a[n1][j]*( v / a[n1][n1]);
                    
                 }
             }
@@ -69,14 +70,6 @@ int main(){
     for (int i = 0; i<n;i++){
         det *= a[i][i];
     }
-    /*
-    for (int i = 0;i<n;i++){
-            for (int j = 0;j<n;j++){
-                printf("%0.2f ",a[i][j]);
-            }
-            printf("\n");
-        }
-    */
     printf("%0.2f",det);
     return 0;
 }
