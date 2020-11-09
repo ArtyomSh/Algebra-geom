@@ -3,30 +3,32 @@
 #include <stdlib.h>
 
 int main(){
-    int n,k, l = 0, max_i = 0;
+    int n, l = 0, max_i = 0;
     float det = 1;
-    scanf ("%d %d",&k, &n);
+    scanf ("%d",&n);
     float** a= (float**)malloc(n * sizeof(float*));
     for (int i = 0; i<n; i++)
     {
-        a[i] = (float*)malloc(k * sizeof(float));
-        for (int j = 0; j<k; j++)
+        a[i] = (float*)malloc(n * sizeof(float));
+        for (int j = 0; j<n; j++)
         {
             scanf("%f", &a[i][j]);
         }
     }
-    for (int i = 0;i<n;i++){
-        int l = 0;
-        for (int j = 0;j<n;j++){
-            if (a[i][j] == 0){
-                l++;
-                if (l == n){
-                    printf("determinant raven 0");
+    while (l<n){
+        int m = 0;
+        for (int i = 0;i<n;i++){
+            //printf("xx%fxx",a[l][i]);
+            if (a[i][l] == 0){
+                m++;
+                //printf("<%d>\n",i);
+                if (m == n){
+                    printf("0");
                     return 0;
                 }
-                
             }
         }
+        l++;
     }
     int n1 = 0;
     float max = -1000000000;
@@ -67,11 +69,11 @@ int main(){
         det *= a[i][i];
     }
     for (int i = 0;i<n;i++){
-        for (int j = 0;j<k;j++){
-            printf("%0.2f ",a[i][j]);
+            for (int j = 0;j<n;j++){
+                printf("%0.2f ",a[i][j]);
+            }
+            printf("\n");
         }
-        printf("\n");
-    }
     printf("%0.2f",det);
     return 0;
 }
