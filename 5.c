@@ -3,42 +3,27 @@
 #include <stdlib.h>
 #include <math.h>
 int main(){
-    int n, l = 0, max_i = 0;
+    int n, max_i = 0;
     float det = 1;
     int q = 0;
     scanf ("%d",&n);
-    float** a= (float**)malloc(n * sizeof(float*));
-    float* b = (float*)malloc(n * sizeof(float));
+    double** a= (double**)malloc(n * sizeof(double*));
+    double* b = (double*)malloc(n * sizeof(double));
     for (int i = 0; i<n; i++)
     {
-        a[i] = (float*)malloc(n * sizeof(float));
+        a[i] = (double*)malloc(n * sizeof(double));
         for (int j = 0; j<n+1; j++)
         {
             if (j == n){
-                scanf("%f",&b[q]);
+                scanf("%lf",&b[q]);
                 q++;
                 continue;
             }
-            scanf("%f", &a[i][j]);
+            scanf("%lf", &a[i][j]);
         }
-    }
-    while (l<n){
-        int m = 0;
-        for (int i = 0;i<n;i++){
-            //printf("xx%fxx",a[l][i]);
-            if (a[i][l] == 0){
-                m++;
-                //printf("<%d>\n",i);
-                if (m == n){
-                    printf("infinity");
-                    return 0;
-                }
-            }
-        }
-        l++;
     }
     int n1 = 0;
-    float max = 0;
+    double max = 0;
     while (n1<n - 1){
         for (int i = n1; i<n; i++){
             if (fabs(a[i][n1])> fabs(max)){ // поиск максимума
@@ -47,11 +32,11 @@ int main(){
             }
         }
         if (max!=a[n1][n1]){  // замена двух строк местами && a[n1][n1] != 0
-            float* t = a[n1];
+            double* t = a[n1];
             a[n1]= a[max_i];
             a[max_i] = t;
             det*= -1;
-            float x = b[n1];
+            double x = b[n1];
             b[n1] = b[max_i];
             b[max_i] = x;
         }
@@ -60,7 +45,7 @@ int main(){
         max_i = n1+1;
         for (int i = n1+1;i<n;i++){
             int l = 0;
-            float v = a[i][n1];
+            double v = a[i][n1];
             b[i] = b[i] - b[n1]*( v / a[n1][n1]);
             for (int j = n1; j<n;j++){
                 if ((a[i][n1]!=0 || l ==1) ){
@@ -73,10 +58,10 @@ int main(){
         }
         n1++;
     }
-    float** c = (float**)malloc(n * sizeof(float));
+    double** c = (double**)malloc(n * sizeof(double));
     for (int i = 0; i<n+1; i++)
     {
-        c[i] = (float*)malloc((n+1) * sizeof(float));
+        c[i] = (double*)malloc((n+1) * sizeof(double));
     }
     for (int i = 0;i<n;i++){
         for (int j = 0;j<n;j++){
@@ -86,9 +71,9 @@ int main(){
     for (int i = 0;i<n;i++){
         c[i][n] = b[i];
     }
-    float* d = (float*)malloc(n * sizeof(float));
+    double* d = (double*)malloc(n * sizeof(double));
     for (int i = n-1; i>=0;i--){
-        float F = 0;
+        double F = 0;
         for (int j = i+1;j<n;j++){
             F+= d[n-j-1] * c[i][j];
         }
@@ -96,7 +81,7 @@ int main(){
     }
     int L = 1;
     for (int i = n-1; i>=0;i--){
-        printf("x%d = %f\n",L,d[i]);
+        printf("x%d = %lf\n",L,d[i]);
         L++;
     }
     return 0;
